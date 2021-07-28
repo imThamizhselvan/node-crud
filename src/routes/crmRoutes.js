@@ -1,6 +1,8 @@
 import { addNewContact,
         getAllContacts,
-        getContactById
+        getContactById,
+        updateContact,
+        deleteContact
  } from '../controllers/crmController';
 
 const routes = (app) => {
@@ -11,18 +13,17 @@ const routes = (app) => {
       console.log(`Request type: ${req.method}`)
       next();
     }, getAllContacts)
+
+    // Post endpoint
     .post(addNewContact);
   
   app.route('/contact/:contactID')
+    // get a specific contact
     .get(getContactById)
-
-    .put((req, res) => {
-      res.send('PUT request successful')
-    })
-    
-    .delete((req, res) => {
-      res.send('DELETE request successful')
-    })
+    // update a specific contact
+    .put(updateContact)
+    // delete a specific contact
+    .delete(deleteContact)
 }
 
 export default routes;
