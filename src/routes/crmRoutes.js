@@ -6,6 +6,8 @@ import { addNewContact,
  } from '../controllers/crmController';
 
 const routes = (app) => {
+
+  //contact apis
   app.route('/contact')
     .get((req, res, next) => {
       //middleware
